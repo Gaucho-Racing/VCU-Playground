@@ -15,9 +15,11 @@ class Motor {
       */
       int state_update();
    private:
-      string throttle();
-      string brake();
-      string idle();
+      string throttle(bool do_not_pass = 0);
+      string brake(bool do_not_pass = 0);
+      string idle_stationary(bool do_not_pass = 0);
+      string idle_moving(bool do_not_pass = 0);
+      string both(bool do_not_pass = 0);
       
       static string state; //the current state of the motor logic
       static bool start_pressed; 
