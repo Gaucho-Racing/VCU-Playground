@@ -1,7 +1,10 @@
 /* 
  * Motor thorttle state.
- * @rt.z, @
+ * @rt.z
 */
+
+using namespace std;
+
 string Motor::throttle(bool do_not_pass = 0) {
    //state output
    cout << "Throttle running..." << endl;
