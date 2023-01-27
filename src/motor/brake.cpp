@@ -2,6 +2,9 @@
  * Motor normal_brake and hard_brake state.
  * @rt.z
 */
+#include <string>
+#include "motor.cpp"
+
 using namespace std;
 
 string Motor::normal_brake(bool do_not_pass = 0) {
