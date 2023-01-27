@@ -1,48 +1,47 @@
 /* 
- * Motor normal_brake and hard_brake state.
+ * Motor normal_brake and hard_brake state and stationary
+ * Brake is mechanical, only controls motor
  * @rt.z
+ * @yarwinliu
 */
 #include <string>
 #include "motor.cpp"
+//#include "Node.h" //from CAN-work repo
 
 using namespace std;
+int tooMuchBrake = 75; //assuming brake and throttle is [0, 100] -rt.z, 
+int tooMuchThrottle = 25;
 
-string Motor::normal_brake(bool do_not_pass = 0) {
-   //check for state change conditions
-   if (Motor.throttle_pod > 0 && Motor.brake_pod == 0) {
-      //to throttle
+//decides which brake to do (normal or hard brake)
+string Motor::brake(){
+   if(getThrottleIn()>0 && getBrakeIn()>tooMuchBrake) {
+      hard_brake();
+   } else if(getThrottleIn()>tooMuchThrottle && getBrakeIn()>0) {
+      hard_brake();
+   } else if (getThrottleIn()>0 && getBrakeIn()>0){
+      throttle_and_brake();
    }
-   if (Motor.throttle_pod > 0 && Motor.throttle_pod < 25) {
-      //to both
+   /*else if(getBrakeIn()>0) { 
+      normal_brake();
+   }*/ else {
+      return;
    }
-   if (Motor.brake_pod == 0) {
-      //to idle
-   }
-   if (Motor.throttle_pod >= 25) {
-      //to hard_brake
-   }
-
-   //output to brake if otherwise
-   Motor.set_brake(1);
-
-   return "normal brake";
 }
 
-string Motor::hard_brake(bool do_not_pass = 1) {
-   //check for state change conditions
-   if (Motor.brake == 0 && Motor.throttle_pod == 0) {
-      //to idle
-   }
-   if (Motor.brake == 0) {
-      //to throttle
-   }
-   if (Motor.throttle_pod < 25) {
-      //to normal_brake
-   }
+/*
+string Motor::normal_brake() {
+   //brake does nothing, mechanically controlled
+   return "normal brake";
+}s
+*/
 
-   //output to brake if otherwise
-   Motor.set_brake(1);
-   Motor.set_motor_speed(0);
-
+string Motor::hard_brake() {
+   setSpeed(0); //set motor speed to zero, mechanical brake will do the rest
+   
    return "hard brake";
+}
+
+string Motor::throttle_and_brake() {
+   setSpeed(getThrottleIn());
+   return "throttle and brake";
 }
