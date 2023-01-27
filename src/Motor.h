@@ -7,6 +7,10 @@ struct MotorData{
 
     double appsPos;
     double bspdPos;
+    double wheelspeedFR;
+    double wheelspeedFL;
+    double wheelspeedRR;
+    double wheelspeedRL;
 
 };
 

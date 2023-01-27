@@ -36,8 +36,10 @@ void Motor::setSpeed(MotorData* mData){
     
     //traction control
 
-    else if (){
+    else if (/*isok*/) {
         /* code */
+    } else{
+        cerr << "motor: should never be here, something is really wrong" << endl;
     }
     
     
