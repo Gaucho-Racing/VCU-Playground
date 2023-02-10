@@ -36,10 +36,7 @@ int main(int argc, char const *argv[]) {
             state = state_2_drive();
             break;
          case 3:
-            state = state_3_neutral();
-            break;
-         case 4:
-            state = state_4_charging();
+            state = state_3_charging();
             break;
          //will add more states as necessary
          case 7:
