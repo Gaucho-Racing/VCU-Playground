@@ -2,6 +2,8 @@
 #include "startup.cpp"
 #include "off.cpp"
 #include "fail.cpp"
+#include "Motor.cpp"
+#include "battery.cpp"
 
 using namespace std;
 
@@ -31,8 +33,15 @@ int main(int argc, char const *argv[]) {
             state = state_1_startup();
             break;
          case 2:
-            state = state_2_on();
+            state = state_2_drive();
             break;
+         case 3:
+            state = state_3_neutral();
+            break;
+         case 4:
+            state = state_4_charging();
+            break;
+         //will add more states as necessary
          case 7:
             break;
       }
