@@ -4,21 +4,15 @@
 //, charged, pre-charge, 
 
 #include <iostream>
-#include "startup.cpp"
-#include "off.cpp"
-#include "fail.cpp"
-#include "Motor.cpp"
-#include "battery.cpp"
+#include "do_not_charge.cpp"
+#include "charging.cpp"
+#include "full_charged.cpp"
+#include "ready_to_charge.cpp"
 
 using namespace std;
 
-
-int main(int argc, char const *argv[]) {
+int state_3_charging() {
     int state = 0;
-    if (argc >= 2) {
-        state = stoi(argv[1]);
-    }
-
     while(state != 7){
         switch (state){
             case 0:
@@ -35,10 +29,11 @@ int main(int argc, char const *argv[]) {
                 break;
             case 4:
                 // do not charge
+                if (state == -1) return -1;
                 break;
             case 7:
                 break;
         }
     }
-    return 0;
+    return 2;
 }
