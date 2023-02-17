@@ -1,14 +1,15 @@
+//main.cpp
+//@rt.z, @Th3w1ll
+
 #include <iostream>
 
+#include "Nodes.h"
 #include "bms.cpp" //make into separate files later
 #include "charging.cpp"
 #include "do_not_charge.cpp"
 #include "fail.cpp"
-#include "Motor.cpp"
-#include "off.cpp"
-#include "on.cpp"
-#include "startup.cpp"
 #include "drive.cpp"
+#include "charging.cpp"
 
 using namespace std;
 
