@@ -7,6 +7,24 @@
 
 using namespace std;
 
+/*
+   TEMPLATE for each state function
+
+   int state_<<state code>>_<<state name>>() {
+      cout << "Changing state to …" << endl;
+      while (1) {
+         if (check for possible critical failures) {
+            return -1;
+         }
+         if (check for possible non-critical failures) {
+            //use dashboard library to send warning to dash.
+         }
+         //take inputs from CAN system
+         //execute and set outputs via CAN system
+         //check if conditions necessetate state change. return code of state to change to if conditions necessitate.
+      }
+   }
+*/
 
 int main(int argc, char const *argv[]) {
    int state = 0;
