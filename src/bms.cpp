@@ -17,27 +17,3 @@ int main(int argc, char const *argv[]) {
     if (argc >= 2) {
         state = stoi(argv[1]);
     }
-
-    while(state != 7){
-        switch (state){
-            case 0:
-                // charging
-                break;
-            case 1:
-                // fully-charged
-                break;
-            case 2:
-                // ready-to-charge
-                break;
-            case 3:
-                // pre-charging
-                break;
-            case 4:
-                // do not charge
-                break;
-            case 7:
-                break;
-        }
-    }
-    return 0;
-}

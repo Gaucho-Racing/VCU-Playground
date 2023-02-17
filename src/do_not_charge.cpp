@@ -8,3 +8,8 @@ bool chargeOrNot () {
         return true;
     }
 }
+
+int state_4_do_not_charge() {
+   //send warning to dashboard
+   //loop until unplugged, on which return to fail state
+}
