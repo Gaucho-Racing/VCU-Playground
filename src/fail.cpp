@@ -13,7 +13,7 @@ struct failed {
  * if system shutdown has not been facilitated, this will send state 1 (startup)?
 */
 
-int state_minus_1_fail(failed* failstates) {
+int state_minus_1_fail() {
    //if critical error: 
    //intiate hardware that permanently shuts off the system
    //return state 7
