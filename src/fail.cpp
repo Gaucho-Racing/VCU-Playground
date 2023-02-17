@@ -3,7 +3,7 @@ using namespace std;
 
 struct failed {
 
-}
+};
 
 /*
  * one instance of this "failed" struct will be on the heap.

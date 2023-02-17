@@ -2,7 +2,7 @@
 #include "startup.cpp"
 #include "off.cpp"
 #include "fail.cpp"
-#include "Motor.cpp"
+#include "drive.cpp"
 #include "charging.cpp"
 
 using namespace std;
@@ -24,7 +24,7 @@ int main(int argc, char const *argv[]) {
    while (state != 7) {
       switch (state) {
          case -1:
-            state = state_minus_1_fail(int error);
+            state = state_minus_1_fail();
             break;
          case 0:
             state = state_0_off();
@@ -44,3 +44,4 @@ int main(int argc, char const *argv[]) {
       }
    }
    return 0;
+}
