@@ -1,9 +1,14 @@
 #include <iostream>
-#include "startup.cpp"
-#include "off.cpp"
+
+#include "bms.cpp" //make into separate files later
+#include "charging.cpp"
+#include "do_not_charge.cpp"
 #include "fail.cpp"
 #include "Motor.cpp"
-#include "battery.cpp"
+#include "off.cpp"
+#include "on.cpp"
+#include "startup.cpp"
+#include "drive.cpp"
 
 using namespace std;
 
@@ -11,7 +16,7 @@ using namespace std;
 int main(int argc, char const *argv[]) {
    int state = 0;
    if (argc >= 2) {
-      state = stoi(argv[1]);
+      state = stoi(argv[1]); //initial state upon startup
    }
    /*
    an interative solution to prevent stack overflow (it's quite obvious and easy)
@@ -21,6 +26,10 @@ int main(int argc, char const *argv[]) {
    The main function then directs execution to the corresponding state, with 7 being
    "turn off the machine" (software cannot keep track of the state while the machine is off)
    */
+
+  //loop through each state
+  //if conditions are met for a state, step into it
+  //the state loops until conditions are met for a state change
    while (state != 7) {
       switch (state) {
          case -1:
@@ -38,8 +47,10 @@ int main(int argc, char const *argv[]) {
          case 3:
             state = state_3_charging();
             break;
-         //will add more states as necessary
+         //add more states as necessary
          case 7:
+            break;
+         default:
             break;
       }
    }

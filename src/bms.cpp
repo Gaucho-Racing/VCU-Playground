@@ -8,7 +8,6 @@
 #include "off.cpp"
 #include "fail.cpp"
 #include "Motor.cpp"
-#include "battery.cpp"
 
 using namespace std;
 
