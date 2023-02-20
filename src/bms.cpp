@@ -1,7 +1,5 @@
-// loop that calls state functions
-// calls battry managemente stae funcitons
-// charging, full-charged, ready-to-charge, pre-cahrging, do-not-charge
-//, charged, pre-charge, 
+#include "do_not_charge.cpp"
+using namespace std;
 
 int state_0_ready_to_charge() {
    cout << "VCU: Changing state to 0: ready to charge..." << endl;
@@ -11,6 +9,7 @@ int state_0_ready_to_charge() {
       if (0 /*fail conditions met*/) {
          return 19;
       }
+      if (!chargeOrNot()) return -1;
       //continously execute state tasks
       cout << "VCU/CAN: Do necessary things here" << endl;
       //check for state change
@@ -31,6 +30,7 @@ int state_1_not_charging() { //an extended version of precharge that includes th
       if (0 /*fail conditions met*/) {
          return 19;
       }
+      if (!chargeOrNot()) return -1;
       //continously execute state tasks
       cout << "VCU/CAN: Do other necessary things here" << endl;
       //check for state change
@@ -49,6 +49,7 @@ int state_2_charging() {
       if (0 /*fail conditions met*/) {
          return 19;
       }
+      if (!chargeOrNot()) return -1;
       //continously execute state tasks
       cout << "VCU/CAN: Do necessary things here" << endl;
       //check for state change conditions
@@ -58,17 +59,18 @@ int state_2_charging() {
          return 0;
       } else if (getCurrent() <= 10) {
          return 1;
-      } e
+      }
    }
 }
 
-int state_3_charging() {
+int state_3_fully_charged() {
    cout << "VCU: Switching state to 3: fully charged..." << endl;
    cout << "CAN: Send signal to dashboard to indicate FULLY CHARGED." << endl;
    while (1) {
       if (0 /*fail conditions met*/) {
          return 19;
       }
+      if (!chargeOrNot()) return -1;
       //continously execute state tasks
       cout << "VCU/CAN: Do necessary things here" << endl;
       if (getChargeState() < 99 && getCurrent() >= -10) {
